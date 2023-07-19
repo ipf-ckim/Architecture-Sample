@@ -25,7 +25,7 @@ final class LoginInteractor {
     
     // MARK: - Interface
     
-    var responseDelegate: LoginResponseDelegate?
+    weak var responseDelegate: LoginResponseDelegate?
     
     
     // MARK: - Attribute
