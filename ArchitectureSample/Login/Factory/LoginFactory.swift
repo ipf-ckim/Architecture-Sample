@@ -17,7 +17,14 @@ enum LoginFactory {
         
         let service = LoginService()
         let storage = LoginStateStorage()
-        let interactor = LoginInteractor(loginService: service, loginStateStorage: storage)
+        let validator = LoginInputValidator()
+        let encryptor = LoginPasswordEncryptor()
+        let interactor = LoginInteractor(
+            service: service,
+            loginStateStorage: storage,
+            validator: validator,
+            encryptor: encryptor
+        )
         presenter.requestDelegate = interactor
         interactor.responseDelegate = presenter
         

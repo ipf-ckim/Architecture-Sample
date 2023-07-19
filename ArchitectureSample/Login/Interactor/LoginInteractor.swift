@@ -30,15 +30,24 @@ final class LoginInteractor {
     
     // MARK: - Attribute
     
-    private let loginService: LoginServiceType
+    private let service: LoginServiceType
     private let loginStateStorage: LoginStateStorageType
+    private let validator: LoginInputValidatorType
+    private let encryptor: LoginPasswordEncryptorType
     
     
     // MARK: - Initialization
     
-    init(loginService: LoginServiceType, loginStateStorage: LoginStateStorage) {
-        self.loginService = loginService
+    init(
+        service: LoginServiceType,
+        loginStateStorage: LoginStateStorage,
+        validator: LoginInputValidatorType,
+        encryptor: LoginPasswordEncryptorType
+    ) {
+        self.service = service
         self.loginStateStorage = loginStateStorage
+        self.validator = validator
+        self.encryptor = encryptor
     }
 }
 
@@ -48,16 +57,25 @@ final class LoginInteractor {
 extension LoginInteractor: LoginRequestDelegate {
     
     func login(request: LoginInteractor.Login.Request) {
-        loginService.login(id: request.id, password: request.password) { [weak self] result in
-            let response: LoginInteractor.Login.Response
-            switch result {
-            case .success:
-                response = LoginInteractor.Login.Response(error: nil)
-            case .failure(let error):
-                response = LoginInteractor.Login.Response(error: error)
-            }
+        do {
+            try validator.validateID(request.id)
+            try validator.validatePassword(request.password)
             
-            self?.responseDelegate?.presentHomeView(response: response)
+            let securedPassword = encryptor.encrypt(request.password)
+            service.login(id: request.id, password: securedPassword) { [weak self] result in
+                let response: LoginInteractor.Login.Response
+                switch result {
+                case .success:
+                    response = LoginInteractor.Login.Response(error: nil)
+                case .failure(let error):
+                    response = LoginInteractor.Login.Response(error: error)
+                }
+                
+                self?.responseDelegate?.presentHomeView(response: response)
+            }
+        } catch {
+            let response = LoginInteractor.Login.Response(error: error)
+            responseDelegate?.presentHomeView(response: response)
         }
     }
     

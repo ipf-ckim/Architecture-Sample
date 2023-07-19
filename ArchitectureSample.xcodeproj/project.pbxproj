@@ -19,6 +19,10 @@
 		653D464B2A66733900C7E78D /* LoginStateStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653D464A2A66733900C7E78D /* LoginStateStorage.swift */; };
 		653D46532A6676F600C7E78D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653D46522A6676F600C7E78D /* HomePresenter.swift */; };
 		653D46592A667B2F00C7E78D /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653D46582A667B2F00C7E78D /* HomeRouter.swift */; };
+		653D465C2A6762B300C7E78D /* LoginPasswordEncryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653D465B2A6762B300C7E78D /* LoginPasswordEncryptor.swift */; };
+		653D465E2A6762EA00C7E78D /* LoginPasswordEncryptorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653D465D2A6762EA00C7E78D /* LoginPasswordEncryptorType.swift */; };
+		653D46612A67631000C7E78D /* LoginInputValidatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653D46602A67631000C7E78D /* LoginInputValidatorType.swift */; };
+		653D46632A67631A00C7E78D /* LoginInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653D46622A67631A00C7E78D /* LoginInputValidator.swift */; };
 		657AB2F72A666A230003BB6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657AB2F62A666A230003BB6F /* AppDelegate.swift */; };
 		657AB2F92A666A230003BB6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657AB2F82A666A230003BB6F /* SceneDelegate.swift */; };
 		657AB3002A666A240003BB6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657AB2FF2A666A240003BB6F /* Assets.xcassets */; };
@@ -41,6 +45,10 @@
 		653D464A2A66733900C7E78D /* LoginStateStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStateStorage.swift; sourceTree = "<group>"; };
 		653D46522A6676F600C7E78D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		653D46582A667B2F00C7E78D /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		653D465B2A6762B300C7E78D /* LoginPasswordEncryptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPasswordEncryptor.swift; sourceTree = "<group>"; };
+		653D465D2A6762EA00C7E78D /* LoginPasswordEncryptorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPasswordEncryptorType.swift; sourceTree = "<group>"; };
+		653D46602A67631000C7E78D /* LoginInputValidatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputValidatorType.swift; sourceTree = "<group>"; };
+		653D46622A67631A00C7E78D /* LoginInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputValidator.swift; sourceTree = "<group>"; };
 		657AB2F32A666A230003BB6F /* ArchitectureSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		657AB2F62A666A230003BB6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		657AB2F82A666A230003BB6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +78,8 @@
 			children = (
 				653D46322A666E0400C7E78D /* LoginInteractor.swift */,
 				653D46342A666E1900C7E78D /* LoginInteractor+Model.swift */,
+				653D465F2A6762FB00C7E78D /* Validator */,
+				653D465A2A6762A600C7E78D /* Encryptor */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -157,6 +167,24 @@
 				653D46582A667B2F00C7E78D /* HomeRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		653D465A2A6762A600C7E78D /* Encryptor */ = {
+			isa = PBXGroup;
+			children = (
+				653D465D2A6762EA00C7E78D /* LoginPasswordEncryptorType.swift */,
+				653D465B2A6762B300C7E78D /* LoginPasswordEncryptor.swift */,
+			);
+			path = Encryptor;
+			sourceTree = "<group>";
+		};
+		653D465F2A6762FB00C7E78D /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				653D46602A67631000C7E78D /* LoginInputValidatorType.swift */,
+				653D46622A67631A00C7E78D /* LoginInputValidator.swift */,
+			);
+			path = Validator;
 			sourceTree = "<group>";
 		};
 		657AB2EA2A666A230003BB6F = {
@@ -304,6 +332,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				653D465E2A6762EA00C7E78D /* LoginPasswordEncryptorType.swift in Sources */,
+				653D46612A67631000C7E78D /* LoginInputValidatorType.swift in Sources */,
 				657AB3152A666C360003BB6F /* LoginPresenter+Model.swift in Sources */,
 				657AB3102A666BB20003BB6F /* LoginViewController.swift in Sources */,
 				653D46412A6671C500C7E78D /* LoginRouter.swift in Sources */,
@@ -316,9 +346,11 @@
 				657AB30D2A666B180003BB6F /* AppRouter.swift in Sources */,
 				657AB2F72A666A230003BB6F /* AppDelegate.swift in Sources */,
 				653D46482A66723B00C7E78D /* HomeFactory.swift in Sources */,
+				653D46632A67631A00C7E78D /* LoginInputValidator.swift in Sources */,
 				657AB2F92A666A230003BB6F /* SceneDelegate.swift in Sources */,
 				653D46352A666E1900C7E78D /* LoginInteractor+Model.swift in Sources */,
 				653D46452A66720B00C7E78D /* HomeViewController.swift in Sources */,
+				653D465C2A6762B300C7E78D /* LoginPasswordEncryptor.swift in Sources */,
 				657AB3132A666C220003BB6F /* LoginPresenter.swift in Sources */,
 				653D46532A6676F600C7E78D /* HomePresenter.swift in Sources */,
 			);

@@ -46,9 +46,12 @@ final class LoginViewController: UIViewController {
         
         titleLabel.text = "Log In"
         titleLabel.font = .systemFont(ofSize: 48, weight: .bold)
+        titleLabel.textAlignment = .center
         
         idTextField.placeholder = "ID"
+        idTextField.borderStyle = .roundedRect
         passwordTextField.placeholder = "PASSWORD"
+        passwordTextField.borderStyle = .roundedRect
         
         loginButton.setTitle("LOGIN", for: .normal)
         loginButton.setTitleColor(.white, for: .normal)
@@ -71,6 +74,18 @@ final class LoginViewController: UIViewController {
         stackView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        idTextField.snp.makeConstraints { make in
+            make.height.equalTo(48)
+        }
+        
+        passwordTextField.snp.makeConstraints { make in
+            make.height.equalTo(48)
+        }
+        
+        loginButton.snp.makeConstraints { make in
+            make.height.equalTo(54)
         }
     }
     

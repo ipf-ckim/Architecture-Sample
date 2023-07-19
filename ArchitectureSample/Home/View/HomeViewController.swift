@@ -39,6 +39,7 @@ final class HomeViewController: UIViewController {
         logoutButton.setTitleColor(.white, for: .normal)
         logoutButton.backgroundColor = .tintColor
         logoutButton.addTarget(self, action: #selector(logoutButtonTouched(_:)), for: .touchUpInside)
+        logoutButton.layer.cornerRadius = 16
     }
     
     private func setUpSubviews() {
@@ -47,7 +48,9 @@ final class HomeViewController: UIViewController {
     
     private func setUpConstraints() {
         logoutButton.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.centerY.equalToSuperview()
+            make.height.equalTo(54)
         }
     }
 }
