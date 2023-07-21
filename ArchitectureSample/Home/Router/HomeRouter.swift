@@ -16,7 +16,8 @@ final class HomeRouter: HomeRouterType {
     // MARK: - Interface
     
     func routeToLogin() {
-        let viewController = LoginFactory.makeLoginViewController(window: window)
+//        let viewController = LoginFactory.makeLoginViewController(window: window)
+        let viewController = LoginViewController()
         window.rootViewController = viewController
     }
     

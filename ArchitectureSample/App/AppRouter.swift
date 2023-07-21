@@ -18,7 +18,8 @@ final class AppRouter {
         if isLogin {
             viewController = HomeFactory.makeHomeViewController(window: window)
         } else {
-            viewController = LoginFactory.makeLoginViewController(window: window)
+            viewController = LoginViewController()
+//            viewController = LoginFactory.makeLoginViewController(window: window)
         }
         
         window.rootViewController = viewController

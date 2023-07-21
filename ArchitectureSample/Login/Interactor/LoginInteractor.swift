@@ -23,15 +23,10 @@ protocol LoginResponseDelegate: AnyObject {
 
 final class LoginInteractor {
     
-    // MARK: - Interface
-    
-    weak var responseDelegate: LoginResponseDelegate?
-    
-    
     // MARK: - Attribute
     
-    private let service: LoginServiceType
-    private let loginStateStorage: LoginStateStorageType
+    private unowned let responseDelegate: any LoginResponseDelegate
+    private let gateway: LoginGatewayType
     private let validator: LoginInputValidatorType
     private let encryptor: LoginPasswordEncryptorType
     
@@ -39,13 +34,13 @@ final class LoginInteractor {
     // MARK: - Initialization
     
     init(
-        service: LoginServiceType,
-        loginStateStorage: LoginStateStorage,
+        responseDelegate: any LoginResponseDelegate,
+        gateway: LoginGatewayType,
         validator: LoginInputValidatorType,
         encryptor: LoginPasswordEncryptorType
     ) {
-        self.service = service
-        self.loginStateStorage = loginStateStorage
+        self.responseDelegate = responseDelegate
+        self.gateway = gateway
         self.validator = validator
         self.encryptor = encryptor
     }
@@ -62,7 +57,7 @@ extension LoginInteractor: LoginRequestDelegate {
             try validator.validatePassword(request.password)
             
             let securedPassword = encryptor.encrypt(request.password)
-            service.login(id: request.id, password: securedPassword) { [weak self] result in
+            gateway.login(id: request.id, password: securedPassword) { [weak self] result in
                 let response: LoginInteractor.Login.Response
                 switch result {
                 case .success:
@@ -71,15 +66,15 @@ extension LoginInteractor: LoginRequestDelegate {
                     response = LoginInteractor.Login.Response(error: error)
                 }
                 
-                self?.responseDelegate?.presentHomeView(response: response)
+                self?.responseDelegate.presentHomeView(response: response)
             }
         } catch {
             let response = LoginInteractor.Login.Response(error: error)
-            responseDelegate?.presentHomeView(response: response)
+            responseDelegate.presentHomeView(response: response)
         }
     }
     
     func registerLoginState(request: RegisterLoginState.Request) {
-        loginStateStorage.register(isLogin: request.isLogin)
+        gateway.registerLoginState(isLogin: request.isLogin)
     }
 }

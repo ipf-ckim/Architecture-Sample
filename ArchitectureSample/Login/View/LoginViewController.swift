@@ -10,9 +10,12 @@ import SnapKit
 
 final class LoginViewController: UIViewController {
     
-    // MARK: - Interface
+    // MARK: - Attribute
     
-    var actionDelegate: (any LoginActionDelegate)?
+    private lazy var actionDelegate: any LoginActionDelegate = LoginPresenter(
+        presentationDelegate: self,
+        router: LoginRouter(window: view.window!)
+    )
     
     
     // MARK: - UI
@@ -35,7 +38,7 @@ final class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        actionDelegate?.loginViewDidAppear()
+        actionDelegate.loginViewDidAppear()
     }
     
     
@@ -105,7 +108,7 @@ private extension LoginViewController {
     
     @objc
     func loginButtonTouched(_ sender: UIButton) {
-        actionDelegate?.loginButtonTouched(
+        actionDelegate.loginButtonTouched(
             id: idTextField.text ?? "",
             password: passwordTextField.text ?? ""
         )

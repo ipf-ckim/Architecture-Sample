@@ -23,6 +23,7 @@
 		653D465E2A6762EA00C7E78D /* LoginPasswordEncryptorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653D465D2A6762EA00C7E78D /* LoginPasswordEncryptorType.swift */; };
 		653D46612A67631000C7E78D /* LoginInputValidatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653D46602A67631000C7E78D /* LoginInputValidatorType.swift */; };
 		653D46632A67631A00C7E78D /* LoginInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653D46622A67631A00C7E78D /* LoginInputValidator.swift */; };
+		653D46652A67A91400C7E78D /* LoginGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653D46642A67A91400C7E78D /* LoginGateway.swift */; };
 		657AB2F72A666A230003BB6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657AB2F62A666A230003BB6F /* AppDelegate.swift */; };
 		657AB2F92A666A230003BB6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657AB2F82A666A230003BB6F /* SceneDelegate.swift */; };
 		657AB3002A666A240003BB6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657AB2FF2A666A240003BB6F /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		653D465D2A6762EA00C7E78D /* LoginPasswordEncryptorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPasswordEncryptorType.swift; sourceTree = "<group>"; };
 		653D46602A67631000C7E78D /* LoginInputValidatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputValidatorType.swift; sourceTree = "<group>"; };
 		653D46622A67631A00C7E78D /* LoginInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputValidator.swift; sourceTree = "<group>"; };
+		653D46642A67A91400C7E78D /* LoginGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginGateway.swift; sourceTree = "<group>"; };
 		657AB2F32A666A230003BB6F /* ArchitectureSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		657AB2F62A666A230003BB6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		657AB2F82A666A230003BB6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 		653D46362A666E4C00C7E78D /* Gateway */ = {
 			isa = PBXGroup;
 			children = (
+				653D46642A67A91400C7E78D /* LoginGateway.swift */,
 				653D463C2A66702200C7E78D /* Network */,
 				653D46492A66732900C7E78D /* Persistance */,
 			);
@@ -334,6 +337,7 @@
 			files = (
 				653D465E2A6762EA00C7E78D /* LoginPasswordEncryptorType.swift in Sources */,
 				653D46612A67631000C7E78D /* LoginInputValidatorType.swift in Sources */,
+				653D46652A67A91400C7E78D /* LoginGateway.swift in Sources */,
 				657AB3152A666C360003BB6F /* LoginPresenter+Model.swift in Sources */,
 				657AB3102A666BB20003BB6F /* LoginViewController.swift in Sources */,
 				653D46412A6671C500C7E78D /* LoginRouter.swift in Sources */,
